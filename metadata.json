@@ -1,0 +1,7 @@
+{
+  "name": "BHL Computer Tanjong Malim",
+  "description": "High-conversion website for BHL Computer - Sales, Repair, and Custom Gaming PCs in Tanjong Malim.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
