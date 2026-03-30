@@ -10,29 +10,16 @@ export function Dashboard() {
   const sidebarLinks = [
     { name: "Profile", path: "/dashboard", icon: User },
     { name: "Orders", path: "/dashboard/orders", icon: ShoppingBag },
-    { name: "Subscriptions", path: "/dashboard/subscriptions", icon: Sparkles },
+    { name: "Support", path: "/dashboard/support", icon: Sparkles },
     { name: "Wishlist", path: "/dashboard/wishlist", icon: Heart },
     { name: "Settings", path: "/dashboard/settings", icon: Settings },
   ];
 
   return (
-    <div className="pt-32 pb-20 px-4 bg-space-dark min-h-screen relative overflow-hidden">
-      {/* Background Stars */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(40)].map((_, i) => (
-          <div
-            key={i}
-            className="star"
-            style={{
-              width: Math.random() * 2 + 'px',
-              height: Math.random() * 2 + 'px',
-              top: Math.random() * 100 + '%',
-              left: Math.random() * 100 + '%',
-              animationDelay: Math.random() * 5 + 's',
-              opacity: Math.random() * 0.5 + 0.2
-            }}
-          />
-        ))}
+    <div className="pt-32 pb-20 px-4 bg-tech-black min-h-screen relative overflow-hidden">
+      {/* Tech Grid Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
       </div>
 
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 relative z-10">
@@ -42,12 +29,12 @@ export function Dashboard() {
             <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent pointer-events-none" />
             <div className="relative inline-block mb-6">
               <img src="https://i.pravatar.cc/150?u=johndoe" className="w-24 h-24 rounded-full border-4 border-accent/20 p-1 shadow-2xl" />
-              <div className="absolute bottom-0 right-0 bg-accent text-white p-2 rounded-full shadow-lg galaxy-glow">
+              <div className="absolute bottom-0 right-0 bg-accent text-white p-2 rounded-full shadow-lg tech-glow">
                 <Sparkles className="w-4 h-4" />
               </div>
             </div>
             <h2 className="text-2xl font-display font-bold mb-1 text-white">John Doe</h2>
-            <p className="text-[10px] text-accent font-bold uppercase tracking-widest mb-6">Cosmic Elite Member</p>
+            <p className="text-[10px] text-accent font-bold uppercase tracking-widest mb-6">BHL Tech Member</p>
             <button className="w-full bg-white/5 text-slate-300 py-3 rounded-xl font-bold hover:bg-white/10 transition-colors flex items-center justify-center gap-2 border border-white/10">
               <LogOut className="w-4 h-4" />
               Logout
@@ -62,7 +49,7 @@ export function Dashboard() {
                 className={cn(
                   "flex items-center gap-4 px-6 py-4 rounded-2xl font-bold transition-all",
                   location.pathname === link.path 
-                    ? "bg-accent text-white shadow-lg galaxy-glow" 
+                    ? "bg-accent text-white shadow-lg tech-glow" 
                     : "text-slate-400 hover:bg-white/5 hover:text-accent"
                 )}
               >
@@ -78,7 +65,7 @@ export function Dashboard() {
           <Routes>
             <Route path="/" element={<ProfileOverview />} />
             <Route path="/orders" element={<OrdersList />} />
-            <Route path="/subscriptions" element={<SubscriptionsView />} />
+            <Route path="/support" element={<SupportView />} />
             <Route path="/wishlist" element={<WishlistGrid />} />
             <Route path="/settings" element={<SettingsForm />} />
           </Routes>
@@ -89,18 +76,18 @@ export function Dashboard() {
 }
 
 function ProfileOverview() {
-  const readingProgress = [
-    { title: "The Alchemist", author: "Paulo Coelho", progress: 65, image: "https://picsum.photos/seed/alchemist/100/150" },
-    { title: "Atomic Habits", author: "James Clear", progress: 30, image: "https://picsum.photos/seed/habits/100/150" },
+  const repairStatus = [
+    { title: "Gaming PC Cleanup", status: "In Progress", progress: 65, image: "https://picsum.photos/seed/pc/100/150" },
+    { title: "Laptop Screen Replacement", status: "Pending Parts", progress: 30, image: "https://picsum.photos/seed/laptop/100/150" },
   ];
 
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-12">
       <div className="grid md:grid-cols-3 gap-8">
         {[
-          { label: "Total Books", value: "24", icon: BookOpen },
-          { label: "Active Subs", value: "1", icon: Sparkles },
-          { label: "Orders", value: "12", icon: ShoppingBag }
+          { label: "Tech Items", value: "24", icon: ShoppingCart },
+          { label: "Active Repairs", value: "2", icon: Settings },
+          { label: "Total Orders", value: "12", icon: ShoppingBag }
         ].map((stat, i) => (
           <div key={i} className="glass-card p-10 text-center group hover:border-accent/30 transition-colors">
             <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-white/10 group-hover:bg-accent/10 transition-colors">
@@ -113,25 +100,25 @@ function ProfileOverview() {
       </div>
 
       <div className="space-y-8">
-        <h3 className="text-3xl font-display font-bold text-white tracking-tight">CURRENTLY READING</h3>
+        <h3 className="text-3xl font-display font-bold text-white tracking-tight">ACTIVE REPAIRS</h3>
         <div className="grid md:grid-cols-2 gap-8">
-          {readingProgress.map((book, i) => (
+          {repairStatus.map((repair, i) => (
             <div key={i} className="glass-card p-8 flex gap-6 items-center group">
-              <img src={book.image} alt={book.title} className="w-20 h-28 rounded-xl object-cover shadow-2xl border border-white/10 group-hover:scale-105 transition-transform" />
+              <img src={repair.image} alt={repair.title} className="w-20 h-28 rounded-xl object-cover shadow-2xl border border-white/10 group-hover:scale-105 transition-transform" />
               <div className="flex-grow">
-                <h4 className="font-display font-bold text-lg mb-1 text-white">{book.title}</h4>
-                <p className="text-sm text-slate-400 mb-4">{book.author}</p>
+                <h4 className="font-display font-bold text-lg mb-1 text-white">{repair.title}</h4>
+                <p className="text-sm text-slate-400 mb-4">{repair.status}</p>
                 <div className="space-y-2">
                   <div className="flex justify-between text-[10px] font-bold uppercase tracking-widest">
                     <span className="text-slate-500">Progress</span>
-                    <span className="text-accent">{book.progress}%</span>
+                    <span className="text-accent">{repair.progress}%</span>
                   </div>
                   <div className="h-2 bg-white/5 rounded-full overflow-hidden border border-white/5">
                     <motion.div 
                       initial={{ width: 0 }}
-                      animate={{ width: `${book.progress}%` }}
+                      animate={{ width: `${repair.progress}%` }}
                       transition={{ duration: 1, delay: 0.5 }}
-                      className="h-full bg-accent galaxy-glow" 
+                      className="h-full bg-accent tech-glow" 
                     />
                   </div>
                 </div>
@@ -145,9 +132,9 @@ function ProfileOverview() {
         <h3 className="text-3xl font-display font-bold text-white tracking-tight">RECENT ACTIVITY</h3>
         <div className="space-y-4">
           {[
-            { action: "Purchased 'The Alchemist'", time: "2 days ago", icon: ShoppingBag },
-            { action: "Added 'Dune' to wishlist", time: "5 days ago", icon: Heart },
-            { action: "Subscription renewed", time: "1 week ago", icon: Sparkles }
+            { action: "Purchased 'RTX 4060 Ti'", time: "2 days ago", icon: ShoppingBag },
+            { action: "Added 'Gaming Mouse' to wishlist", time: "5 days ago", icon: Heart },
+            { action: "Repair ticket updated", time: "1 week ago", icon: Settings }
           ].map((activity, i) => (
             <div key={i} className="glass-card p-6 flex items-center gap-6 group hover:bg-white/5 transition-colors">
               <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center border border-white/10 group-hover:border-accent/30 transition-colors">
@@ -175,7 +162,7 @@ function OrdersList() {
           <div key={i} className="glass-card p-8">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 pb-8 border-b border-white/10">
               <div>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1">Order #CB-1234{i}</p>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1">Order #BHL-1234{i}</p>
                 <p className="font-bold text-white">Placed on March {20 - i}, 2026</p>
               </div>
               <div className="flex items-center gap-4">
@@ -186,7 +173,7 @@ function OrdersList() {
             <div className="flex items-center gap-4">
               <div className="flex -space-x-4">
                 {[1, 2].map(j => (
-                  <img key={j} src={`https://picsum.photos/seed/book${j}/100/150`} className="w-12 h-16 rounded-lg border-2 border-space-dark object-cover shadow-xl" />
+                  <img key={j} src={`https://picsum.photos/seed/tech${j}/100/150`} className="w-12 h-16 rounded-lg border-2 border-space-dark object-cover shadow-xl" />
                 ))}
               </div>
               <p className="text-sm font-bold text-slate-400">2 items in this order</p>
@@ -199,24 +186,24 @@ function OrdersList() {
   );
 }
 
-function SubscriptionsView() {
+function SupportView() {
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="space-y-8">
-      <h2 className="text-4xl font-display font-bold text-white tracking-tight">YOUR SUBSCRIPTIONS</h2>
-      <div className="p-12 rounded-[60px] bg-accent text-white relative overflow-hidden shadow-2xl galaxy-glow">
+      <h2 className="text-4xl font-display font-bold text-white tracking-tight">TECH SUPPORT</h2>
+      <div className="p-12 rounded-[60px] bg-accent text-white relative overflow-hidden shadow-2xl tech-glow">
         <div className="relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/20 rounded-full text-[10px] font-bold uppercase tracking-widest mb-8 border border-white/20">
             <Sparkles className="w-3 h-3" />
-            Active Plan
+            BHL Priority
           </div>
-          <h3 className="text-5xl font-display font-bold mb-4">Cosmic Elite</h3>
-          <p className="text-white/80 text-lg mb-10 max-w-md leading-relaxed">Your next billing date is April 15, 2026. You have 1 physical book delivery remaining this month.</p>
+          <h3 className="text-5xl font-display font-bold mb-4">BHL VIP Support</h3>
+          <p className="text-white/80 text-lg mb-10 max-w-md leading-relaxed">You have active priority support for your custom gaming PC. Your next scheduled maintenance is April 15, 2026.</p>
           <div className="flex flex-wrap gap-4">
             <button className="bg-white text-accent px-8 py-3 rounded-full font-bold hover:scale-105 transition-transform shadow-xl">
-              Manage Billing
+              Contact Tech
             </button>
             <button className="bg-white/20 text-white px-8 py-3 rounded-full font-bold hover:bg-white/30 transition-colors border border-white/20">
-              Change Plan
+              View Tickets
             </button>
           </div>
         </div>
@@ -228,9 +215,9 @@ function SubscriptionsView() {
 
 function WishlistGrid() {
   const wishlistItems = [
-    { id: 5, title: "Dune", author: "Frank Herbert", price: 55.00, image: "https://picsum.photos/seed/book5/400/600", category: "Sci-Fi" },
-    { id: 6, title: "The Silent Patient", author: "Alex Michaelides", price: 45.00, image: "https://picsum.photos/seed/book6/400/600", category: "Mystery" },
-    { id: 7, title: "Sapiens", author: "Yuval Noah Harari", price: 65.00, image: "https://picsum.photos/seed/book7/400/600", category: "History" },
+    { id: 5, title: "Gaming Mouse G502", brand: "Logitech", price: 199.00, image: "https://picsum.photos/seed/mouse/400/600", category: "Peripherals" },
+    { id: 6, title: "27\" 144Hz Monitor", brand: "Samsung", price: 899.00, image: "https://picsum.photos/seed/monitor/400/600", category: "Display" },
+    { id: 7, title: "1TB NVMe SSD", brand: "Samsung", price: 450.00, image: "https://picsum.photos/seed/ssd/400/600", category: "Storage" },
   ];
 
   return (
@@ -240,26 +227,26 @@ function WishlistGrid() {
         <p className="text-slate-500 font-bold uppercase tracking-widest text-[10px]">{wishlistItems.length} Items</p>
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {wishlistItems.map((book) => (
-          <div key={book.id} className="group">
+        {wishlistItems.map((item) => (
+          <div key={item.id} className="group">
             <div className="aspect-[3/4] rounded-[32px] overflow-hidden mb-6 relative border border-white/10 shadow-2xl">
-              <img src={book.image} alt={book.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+              <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
               <div className="absolute top-4 right-4">
                 <button className="bg-white/10 backdrop-blur-md p-2 rounded-full shadow-lg text-red-500 hover:bg-red-500 hover:text-white transition-colors border border-white/10">
                   <Heart className="w-5 h-5 fill-current" />
                 </button>
               </div>
               <div className="absolute bottom-4 left-4">
-                <span className="bg-accent text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full galaxy-glow">
-                  {book.category}
+                <span className="bg-accent text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full tech-glow">
+                  {item.category}
                 </span>
               </div>
             </div>
             <div className="flex justify-between items-start mb-2">
-              <h3 className="font-display font-bold text-lg text-white group-hover:text-accent transition-colors">{book.title}</h3>
-              <p className="font-display font-bold text-accent">RM {book.price}</p>
+              <h3 className="font-display font-bold text-lg text-white group-hover:text-accent transition-colors">{item.title}</h3>
+              <p className="font-display font-bold text-accent">RM {item.price}</p>
             </div>
-            <p className="text-sm text-slate-400 mb-6">{book.author}</p>
+            <p className="text-sm text-slate-400 mb-6">{item.brand}</p>
             <button className="w-full py-4 rounded-2xl bg-white/5 text-white font-bold text-sm hover:bg-accent hover:scale-[1.02] transition-all flex items-center justify-center gap-2 border border-white/10 hover:border-accent/50">
               <ShoppingCart className="w-4 h-4" /> Add to Cart
             </button>
@@ -318,7 +305,7 @@ function SettingsForm() {
           </div>
         </section>
 
-        <button className="bg-accent text-white px-12 py-5 rounded-full font-bold hover:scale-[1.02] transition-transform shadow-xl galaxy-glow">
+        <button className="bg-accent text-white px-12 py-5 rounded-full font-bold hover:scale-[1.02] transition-transform shadow-xl tech-glow">
           Save Changes
         </button>
       </div>

@@ -22,23 +22,10 @@ export function Checkout() {
   };
 
   return (
-    <div className="pt-32 pb-20 px-4 bg-space-dark min-h-screen relative overflow-hidden">
-      {/* Background Stars */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(50)].map((_, i) => (
-          <div
-            key={i}
-            className="star"
-            style={{
-              width: Math.random() * 2 + 'px',
-              height: Math.random() * 2 + 'px',
-              top: Math.random() * 100 + '%',
-              left: Math.random() * 100 + '%',
-              animationDelay: Math.random() * 5 + 's',
-              opacity: Math.random() * 0.5 + 0.2
-            }}
-          />
-        ))}
+    <div className="pt-32 pb-20 px-4 bg-tech-black min-h-screen relative overflow-hidden">
+      {/* Background Grid */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -54,7 +41,7 @@ export function Checkout() {
                 <div key={i} className="flex items-center gap-4 shrink-0">
                   <div className={cn(
                     "w-10 h-10 rounded-full flex items-center justify-center font-bold transition-all border",
-                    step >= s.step ? "bg-accent text-white border-accent shadow-lg galaxy-glow" : "bg-white/5 text-slate-500 border-white/10"
+                    step >= s.step ? "bg-accent text-white border-accent shadow-lg tech-glow" : "bg-white/5 text-slate-500 border-white/10"
                   )}>
                     {step > s.step ? <CheckCircle2 className="w-6 h-6" /> : s.step}
                   </div>
@@ -104,7 +91,7 @@ export function Checkout() {
                     <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 ml-4">Address</label>
                     <input 
                       type="text" 
-                      placeholder="123 Galaxy Way" 
+                      placeholder="No. 12, Jalan Universiti" 
                       required
                       className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:outline-none focus:border-accent transition-colors text-white placeholder:text-slate-600"
                     />
@@ -131,14 +118,14 @@ export function Checkout() {
                     <div className="space-y-2">
                       <label className="text-[10px] font-bold uppercase tracking-widest text-slate-500 ml-4">Country</label>
                       <select className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:outline-none focus:border-accent transition-colors text-white appearance-none">
-                        <option className="bg-space-dark">Malaysia</option>
-                        <option className="bg-space-dark">Singapore</option>
-                        <option className="bg-space-dark">Indonesia</option>
-                        <option className="bg-space-dark">Thailand</option>
+                        <option className="bg-tech-black">Malaysia</option>
+                        <option className="bg-tech-black">Singapore</option>
+                        <option className="bg-tech-black">Indonesia</option>
+                        <option className="bg-tech-black">Thailand</option>
                       </select>
                     </div>
                   </div>
-                  <button type="submit" className="w-full bg-accent text-white py-5 rounded-full text-xl font-bold hover:scale-[1.02] transition-transform flex items-center justify-center gap-3 shadow-xl galaxy-glow">
+                  <button type="submit" className="w-full bg-accent text-white py-5 rounded-full text-xl font-bold hover:scale-[1.02] transition-transform flex items-center justify-center gap-3 shadow-xl tech-glow">
                     Continue to Payment <ArrowRight className="w-5 h-5" />
                   </button>
                 </form>
@@ -179,7 +166,7 @@ export function Checkout() {
                   <button onClick={() => setStep(1)} className="flex-1 border border-white/10 py-5 rounded-full text-xl font-bold hover:bg-white/5 transition-colors text-white">
                     Back
                   </button>
-                  <button onClick={() => setStep(3)} className="flex-2 bg-accent text-white py-5 rounded-full text-xl font-bold hover:scale-[1.02] transition-transform flex items-center justify-center gap-3 shadow-xl galaxy-glow">
+                  <button onClick={() => setStep(3)} className="flex-2 bg-accent text-white py-5 rounded-full text-xl font-bold hover:scale-[1.02] transition-transform flex items-center justify-center gap-3 shadow-xl tech-glow">
                     Complete Purchase <ArrowRight className="w-5 h-5" />
                   </button>
                 </div>
@@ -191,14 +178,14 @@ export function Checkout() {
                 <div className="w-24 h-24 bg-green-500 text-white rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl shadow-green-500/20">
                   <CheckCircle2 className="w-12 h-12" />
                 </div>
-                <h2 className="text-5xl font-display font-bold mb-4 text-white tracking-tight">Order Confirmed!</h2>
-                <p className="text-slate-400 mb-10 max-w-md mx-auto text-lg leading-relaxed">Thank you for your purchase. We have sent a confirmation email to your inbox. Your books are on their way!</p>
+                <p className="text-5xl font-display font-bold mb-4 text-white tracking-tight">Order Confirmed!</p>
+                <p className="text-slate-400 mb-10 max-w-md mx-auto text-lg leading-relaxed">Thank you for your purchase. We have sent a confirmation email to your inbox. Your tech is on its way!</p>
                 <div className="flex flex-wrap justify-center gap-4">
-                  <Link to="/dashboard" className="bg-accent text-white px-10 py-4 rounded-full font-bold hover:scale-105 transition-transform galaxy-glow">
+                  <Link to="/dashboard" className="bg-accent text-white px-10 py-4 rounded-full font-bold hover:scale-105 transition-transform tech-glow">
                     View Order
                   </Link>
                   <Link to="/shop" className="border border-white/10 px-10 py-4 rounded-full font-bold hover:bg-white/5 transition-colors text-white">
-                    Return to Archive
+                    Return to Shop
                   </Link>
                 </div>
               </motion.div>
@@ -212,8 +199,8 @@ export function Checkout() {
                 <h2 className="text-2xl font-display font-bold mb-8 text-white tracking-tight">Summary</h2>
                 <div className="space-y-6 mb-8">
                   {[
-                    { title: "The Alchemist", price: 39.90, qty: 1 },
-                    { title: "Atomic Habits", price: 75.00, qty: 1 }
+                    { title: "RTX 4060 Ti Gaming PC", price: 3599.00, qty: 1 },
+                    { title: "Mechanical Keyboard", price: 299.00, qty: 1 }
                   ].map((item, i) => (
                     <div key={i} className="flex justify-between items-start gap-4">
                       <div className="flex-grow">
@@ -227,21 +214,21 @@ export function Checkout() {
                 <div className="space-y-4 pt-8 border-t border-white/10">
                   <div className="flex justify-between text-slate-400 text-sm">
                     <span>Subtotal</span>
-                    <span className="font-bold text-white">RM 114.90</span>
+                    <span className="font-bold text-white">RM 3898.00</span>
                   </div>
                   <div className="flex justify-between text-slate-400 text-sm">
                     <span>Shipping</span>
-                    <span className="font-bold text-white">RM 10.00</span>
+                    <span className="font-bold text-white">RM 20.00</span>
                   </div>
                   <div className="pt-4 flex justify-between items-end">
                     <span className="font-bold text-lg text-white">Total</span>
-                    <span className="text-3xl font-display font-bold text-accent galaxy-glow">RM 124.90</span>
+                    <span className="text-3xl font-display font-bold text-accent tech-glow">RM 3918.00</span>
                   </div>
                 </div>
               </div>
               <div className="p-8 rounded-[32px] bg-white/5 border border-white/10 text-center group">
                 <p className="text-[10px] text-slate-600 font-bold uppercase tracking-widest mb-2 group-hover:text-slate-400 transition-colors">Need Help?</p>
-                <p className="text-sm font-bold text-slate-400 group-hover:text-white transition-colors">support@cosmicbooks.com</p>
+                <p className="text-sm font-bold text-slate-400 group-hover:text-white transition-colors">bhlcomputer@gmail.com</p>
               </div>
             </div>
           )}

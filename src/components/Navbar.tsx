@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
-import { ShoppingCart, BookOpen, Search, Menu, X, User } from "lucide-react";
+import { ShoppingCart, Monitor, Search, Menu, X, User, Cpu } from "lucide-react";
 import { cn } from "../lib/utils";
 
 export function Navbar() {
@@ -10,20 +10,20 @@ export function Navbar() {
 
   const navLinks = [
     { name: "Shop", path: "/shop" },
-    { name: "Subscriptions", path: "/subscriptions" },
+    { name: "Services", path: "/services" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
   ];
 
   return (
-    <nav className="fixed w-full z-50 bg-space-dark/80 backdrop-blur-md border-b border-white/10">
+    <nav className="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center galaxy-glow group-hover:scale-110 transition-transform">
-              <BookOpen className="text-white w-6 h-6" />
+            <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center tech-glow group-hover:scale-110 transition-transform">
+              <Cpu className="text-white w-6 h-6" />
             </div>
-            <span className="text-2xl font-display font-bold tracking-tighter text-white">COSMIC BOOKS</span>
+            <span className="text-2xl font-display font-bold tracking-tighter text-white">BHL <span className="text-accent">COMPUTER</span></span>
           </Link>
 
           {/* Desktop Nav */}
@@ -48,9 +48,9 @@ export function Navbar() {
             </button>
             <Link to="/cart" className="p-2 hover:bg-white/5 rounded-full transition-colors relative text-slate-400 hover:text-white">
               <ShoppingCart className="w-5 h-5" />
-              <span className="absolute top-0 right-0 w-4 h-4 bg-accent text-white text-[8px] flex items-center justify-center rounded-full galaxy-glow">2</span>
+              <span className="absolute -top-1 -right-1 w-4 h-4 bg-accent text-white text-[8px] flex items-center justify-center rounded-full tech-glow">2</span>
             </Link>
-            <Link to="/login" className="bg-white/10 text-white px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-accent transition-all flex items-center gap-2 border border-white/10 galaxy-glow">
+            <Link to="/login" className="bg-white/5 text-white px-6 py-2.5 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-accent transition-all flex items-center gap-2 border border-white/10 tech-glow">
               <User className="w-4 h-4" />
               Login
             </Link>
@@ -72,7 +72,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-space-dark border-b border-white/10 overflow-hidden"
+            className="md:hidden bg-black border-b border-white/5 overflow-hidden"
           >
             <div className="px-4 py-6 space-y-4">
               {navLinks.map((link) => (
@@ -86,8 +86,8 @@ export function Navbar() {
                 </Link>
               ))}
               <div className="pt-4 flex gap-4">
-                <Link to="/login" onClick={() => setIsMenuOpen(false)} className="flex-1 bg-accent text-white py-3 rounded-xl font-bold text-center text-[10px] uppercase tracking-widest galaxy-glow">Login</Link>
-                <Link to="/cart" onClick={() => setIsMenuOpen(false)} className="flex-1 border border-white/10 py-3 rounded-xl font-bold text-center text-[10px] uppercase tracking-widest text-white bg-white/5">Cart (2)</Link>
+                <Link to="/login" onClick={() => setIsMenuOpen(false)} className="flex-1 bg-accent text-white py-3 rounded-lg font-bold text-center text-[10px] uppercase tracking-widest tech-glow">Login</Link>
+                <Link to="/cart" onClick={() => setIsMenuOpen(false)} className="flex-1 border border-white/10 py-3 rounded-lg font-bold text-center text-[10px] uppercase tracking-widest text-white bg-white/5">Cart (2)</Link>
               </div>
             </div>
           </motion.div>

@@ -1,25 +1,14 @@
 import { motion } from "motion/react";
-import { BookOpen, Sparkles, Users, Award, Heart, Globe } from "lucide-react";
+import { Cpu, Sparkles, Users, Award, Heart, ShieldCheck, MapPin, Clock } from "lucide-react";
 
 export function About() {
   return (
-    <div className="pt-32 pb-20 px-4 bg-space-dark min-h-screen relative overflow-hidden">
-      {/* Background Stars */}
+    <div className="pt-32 pb-20 px-4 bg-tech-black min-h-screen relative overflow-hidden">
+      {/* Tech Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(50)].map((_, i) => (
-          <div
-            key={i}
-            className="star"
-            style={{
-              width: Math.random() * 2 + 'px',
-              height: Math.random() * 2 + 'px',
-              top: Math.random() * 100 + '%',
-              left: Math.random() * 100 + '%',
-              animationDelay: Math.random() * 5 + 's',
-              opacity: Math.random() * 0.5 + 0.2
-            }}
-          />
-        ))}
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_30%,rgba(220,38,38,0.05),transparent_50%)]" />
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_80%_70%,rgba(220,38,38,0.05),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
       </div>
 
       <div className="max-w-7xl mx-auto space-y-32 relative z-10">
@@ -28,14 +17,14 @@ export function About() {
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 bg-accent/10 text-accent rounded-full text-[10px] font-bold uppercase tracking-widest border border-accent/20 galaxy-glow"
+            className="inline-flex items-center gap-2 px-4 py-1.5 bg-accent/10 text-accent rounded-full text-[10px] font-bold uppercase tracking-widest border border-accent/20 tech-glow"
           >
             <Sparkles className="w-4 h-4" />
-            Our Cosmic Origin
+            Our Local Roots
           </motion.div>
-          <h1 className="text-6xl md:text-8xl font-display font-bold leading-tight text-white tracking-tighter">BEYOND THE <br /> <span className="italic text-accent galaxy-glow">PRINTED</span> GALAXY</h1>
+          <h1 className="text-6xl md:text-8xl font-display font-bold leading-tight text-white tracking-tighter uppercase">YOUR TRUSTED <br /> <span className="italic text-accent tech-glow">TECH PARTNER</span></h1>
           <p className="text-slate-400 max-w-2xl mx-auto text-xl leading-relaxed">
-            Cosmic Books was founded with a simple mission: to connect every reader with the stories that will define their future across the universe.
+            BHL Computer was established in Tanjong Malim with a clear goal: to provide high-quality computer sales and reliable repair services to our local community.
           </p>
         </div>
 
@@ -47,27 +36,27 @@ export function About() {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="aspect-square rounded-[60px] overflow-hidden border border-white/10 shadow-2xl group">
-              <img src="https://picsum.photos/seed/vision/800/800" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-              <div className="absolute inset-0 bg-gradient-to-t from-space-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="aspect-square rounded-[60px] overflow-hidden border border-white/10 shadow-2xl group bg-white/5">
+              <img src="https://picsum.photos/seed/shop-front/800/800" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
-            <div className="absolute -bottom-10 -right-10 glass-card p-10 rotate-6 hidden md:block galaxy-glow">
-              <p className="text-4xl font-display font-bold text-accent mb-2">2024</p>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Established in Orbit</p>
+            <div className="absolute -bottom-10 -right-10 glass-card p-10 rotate-6 hidden md:block tech-glow">
+              <p className="text-4xl font-display font-bold text-accent mb-2">2018</p>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Established in Tanjong Malim</p>
             </div>
           </motion.div>
 
           <div className="space-y-10">
-            <h2 className="text-5xl font-display font-bold leading-tight text-white tracking-tight">A UNIVERSE OF <br /> <span className="text-accent italic galaxy-glow">POSSIBILITIES</span></h2>
+            <h2 className="text-5xl font-display font-bold leading-tight text-white tracking-tight uppercase">DRIVEN BY <br /> <span className="text-accent italic tech-glow">PERFORMANCE</span></h2>
             <p className="text-lg text-slate-400 leading-relaxed">
-              We believe that books are more than just paper and ink. They are portals to other worlds, vessels of wisdom, and catalysts for change. Whether you're looking for a physical masterpiece to grace your shelves or a digital companion for your travels, we're here to guide you through the stars.
+              We understand that your computer is more than just a machine—it's your gateway to education, work, and entertainment. Whether you're a student at UPSI needing an urgent repair or a gamer looking for a custom-built beast, we treat every device with the precision and care it deserves.
             </p>
             <div className="grid grid-cols-2 gap-8">
               {[
-                { icon: Users, label: "Community", text: "10k+ Active Readers" },
-                { icon: Globe, label: "Global", text: "Shipping to 120+ Systems" },
-                { icon: Award, label: "Quality", text: "Curated Selections" },
-                { icon: Heart, label: "Passion", text: "Reader-First Approach" }
+                { icon: Users, label: "Local Trust", text: "5,000+ Happy Customers" },
+                { icon: ShieldCheck, label: "Reliability", text: "Genuine Parts & Warranty" },
+                { icon: Award, label: "Expertise", text: "Certified Technicians" },
+                { icon: Heart, label: "Service", text: "Customer-First Approach" }
               ].map((item, i) => (
                 <div key={i} className="space-y-3 group">
                   <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center border border-white/10 group-hover:border-accent/30 transition-colors">
@@ -81,25 +70,54 @@ export function About() {
           </div>
         </div>
 
+        {/* Values Section */}
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            { 
+              title: "Fast Turnaround", 
+              desc: "We know you need your device back quickly. Most repairs are completed within 24-48 hours.",
+              icon: Clock 
+            },
+            { 
+              title: "Transparent Pricing", 
+              desc: "No hidden fees. We provide a clear quote before starting any repair or assembly.",
+              icon: Award 
+            },
+            { 
+              title: "Local Support", 
+              desc: "Based in the heart of Tanjong Malim, we're always here when you need us.",
+              icon: MapPin 
+            }
+          ].map((value, i) => (
+            <div key={i} className="glass-card p-10 border border-white/10 rounded-[40px] hover:border-accent/30 transition-all group">
+              <div className="w-12 h-12 bg-accent/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <value.icon className="w-6 h-6 text-accent" />
+              </div>
+              <h3 className="text-2xl font-display font-bold mb-4 text-white uppercase tracking-tight">{value.title}</h3>
+              <p className="text-slate-400 leading-relaxed">{value.desc}</p>
+            </div>
+          ))}
+        </div>
+
         {/* Team Section */}
         <div className="space-y-16">
           <div className="text-center">
-            <h2 className="text-5xl font-display font-bold mb-4 text-white tracking-tight">MEET THE CURATORS</h2>
-            <p className="text-slate-400">The minds behind the universe of Cosmic Books.</p>
+            <h2 className="text-5xl font-display font-bold mb-4 text-white tracking-tight uppercase">MEET OUR EXPERTS</h2>
+            <p className="text-slate-400">The skilled hands behind every repair and custom build.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { name: "Alex Rivera", role: "Founder & CEO", img: "https://i.pravatar.cc/150?u=alex" },
-              { name: "Sarah Chen", role: "Head of Curation", img: "https://i.pravatar.cc/150?u=sarah" },
-              { name: "Marcus Thorne", role: "Community Lead", img: "https://i.pravatar.cc/150?u=marcus" }
+              { name: "Mr. Lim", role: "Founder & Lead Technician", img: "https://i.pravatar.cc/150?u=lim" },
+              { name: "Hafiz", role: "Custom PC Specialist", img: "https://i.pravatar.cc/150?u=hafiz" },
+              { name: "Siti", role: "Customer Support", img: "https://i.pravatar.cc/150?u=siti" }
             ].map((member, i) => (
               <motion.div
                 key={i}
                 whileHover={{ y: -10 }}
-                className="glass-card p-10 text-center group hover:border-accent/30 transition-colors"
+                className="glass-card p-10 text-center group hover:border-accent/30 transition-colors rounded-[40px] border border-white/10"
               >
-                <img src={member.img} className="w-24 h-24 rounded-full mx-auto mb-6 border-4 border-white/10 p-1 group-hover:border-accent/30 transition-colors shadow-2xl" />
-                <h3 className="text-2xl font-display font-bold mb-1 text-white">{member.name}</h3>
+                <img src={member.img} className="w-24 h-24 rounded-full mx-auto mb-6 border-4 border-white/10 p-1 group-hover:border-accent/30 transition-colors shadow-2xl grayscale hover:grayscale-0" />
+                <h3 className="text-2xl font-display font-bold mb-1 text-white uppercase tracking-tight">{member.name}</h3>
                 <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500">{member.role}</p>
               </motion.div>
             ))}

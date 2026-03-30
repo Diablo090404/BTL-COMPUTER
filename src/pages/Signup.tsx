@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
-import { Mail, Lock, ArrowRight, Github, Chrome, ShieldCheck, BookOpen, User, Sparkles, ArrowLeft } from "lucide-react";
+import { Mail, Lock, ArrowRight, Github, Chrome, ShieldCheck, Cpu, User, Sparkles, ArrowLeft } from "lucide-react";
 import { cn } from "../lib/utils";
 
 export function Signup() {
@@ -17,23 +17,10 @@ export function Signup() {
   };
 
   return (
-    <div className="min-h-screen pt-32 pb-20 px-4 bg-space-dark flex items-center justify-center perspective-1000 overflow-hidden relative">
-      {/* Background Stars */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(50)].map((_, i) => (
-          <div
-            key={i}
-            className="star"
-            style={{
-              width: Math.random() * 3 + 'px',
-              height: Math.random() * 3 + 'px',
-              top: Math.random() * 100 + '%',
-              left: Math.random() * 100 + '%',
-              animationDelay: Math.random() * 5 + 's',
-              opacity: Math.random() * 0.7 + 0.3
-            }}
-          />
-        ))}
+    <div className="min-h-screen pt-32 pb-20 px-4 bg-tech-black flex items-center justify-center perspective-1000 overflow-hidden relative">
+      {/* Tech Grid Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
       </div>
 
       <div className="max-w-7xl w-full grid lg:grid-cols-2 gap-16 items-center relative z-10">
@@ -44,18 +31,18 @@ export function Signup() {
           className="hidden lg:block space-y-12"
         >
           <div className="flex items-center gap-4 mb-12">
-            <div className="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center shadow-2xl galaxy-glow">
-              <BookOpen className="text-white w-10 h-10" />
+            <div className="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center shadow-2xl tech-glow">
+              <Cpu className="text-white w-10 h-10" />
             </div>
-            <span className="text-4xl font-display font-bold tracking-tight text-white">COSMIC BOOKS</span>
+            <span className="text-4xl font-display font-bold tracking-tight text-white uppercase tracking-tighter">BHL <span className="text-accent">COMPUTER</span></span>
           </div>
           <h1 className="text-6xl font-display font-bold leading-tight text-white">
-            Join the <br /> 
-            <span className="text-accent italic">Elite</span> <br />
-            Community
+            Power Up <br /> 
+            <span className="text-accent italic">Your Tech</span> <br />
+            Experience
           </h1>
           <p className="text-slate-400 text-xl max-w-md leading-relaxed">
-            Create an account to unlock exclusive features, track your reading history, and join our global community of book lovers.
+            Your ultimate destination for high-performance computing. Sign in to manage your orders and tech services.
           </p>
           <div className="space-y-6">
             {[
@@ -73,27 +60,27 @@ export function Signup() {
           </div>
         </motion.div>
 
-        {/* Right Side: The Flipping Book */}
+        {/* Right Side: The Flipping Card */}
         <div className="relative w-full max-w-[500px] mx-auto aspect-[3/4] preserve-3d transition-all duration-1000">
           <AnimatePresence mode="wait">
             {!isFlipped ? (
-              /* Book Cover */
+              /* Card Cover */
               <motion.div
                 key="cover"
                 initial={{ rotateY: 0 }}
                 exit={{ rotateY: -180 }}
                 transition={{ duration: 0.8, ease: "easeInOut" }}
                 onClick={() => setIsFlipped(true)}
-                className="absolute inset-0 bg-primary rounded-[40px] book-shadow p-12 flex flex-col items-center justify-center text-center cursor-pointer group backface-hidden z-20 border border-white/10"
+                className="absolute inset-0 bg-primary rounded-[40px] tech-shadow p-12 flex flex-col items-center justify-center text-center cursor-pointer group backface-hidden z-20 border border-white/10"
               >
-                <div className="absolute inset-0 opacity-40 bg-[url('https://picsum.photos/seed/nebula/800/1000')] bg-cover mix-blend-overlay rounded-[40px]" />
+                <div className="absolute inset-0 opacity-40 bg-[url('https://picsum.photos/seed/tech/800/1000')] bg-cover mix-blend-overlay rounded-[40px]" />
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-transparent rounded-[40px]" />
                 <div className="relative z-10 space-y-8">
-                  <div className="w-24 h-24 bg-white/10 backdrop-blur-xl rounded-3xl flex items-center justify-center mx-auto border border-white/20 group-hover:scale-110 transition-transform galaxy-glow">
-                    <BookOpen className="text-white w-12 h-12" />
+                  <div className="w-24 h-24 bg-white/10 backdrop-blur-xl rounded-3xl flex items-center justify-center mx-auto border border-white/20 group-hover:scale-110 transition-transform tech-glow">
+                    <Cpu className="text-white w-12 h-12" />
                   </div>
                   <div>
-                    <h2 className="text-white text-5xl font-display font-bold mb-4 tracking-tighter">COSMIC <br /> BOOKS</h2>
+                    <h2 className="text-white text-5xl font-display font-bold mb-4 tracking-tighter uppercase">BHL <br /> COMPUTER</h2>
                     <p className="text-accent text-sm font-bold uppercase tracking-[0.2em]">Open to Join</p>
                   </div>
                   <div className="pt-12">
@@ -105,17 +92,17 @@ export function Signup() {
                     </motion.div>
                   </div>
                 </div>
-                {/* Book Spine Detail */}
+                {/* Card Side Detail */}
                 <div className="absolute left-0 top-0 bottom-0 w-8 bg-black/40 rounded-l-[40px] border-r border-white/10" />
               </motion.div>
             ) : (
-              /* Login/Signup Form (Inside the Book) */
+              /* Login/Signup Form (Inside the Card) */
               <motion.div
                 key="form"
                 initial={{ rotateY: 180, opacity: 0 }}
                 animate={{ rotateY: 0, opacity: 1 }}
                 transition={{ duration: 0.8, ease: "easeInOut" }}
-                className="absolute inset-0 bg-slate-900 rounded-[40px] book-shadow overflow-hidden flex flex-col backface-hidden z-10 border border-white/10"
+                className="absolute inset-0 bg-slate-900 rounded-[40px] tech-shadow overflow-hidden flex flex-col backface-hidden z-10 border border-white/10"
               >
                 {/* Left Page (Visual/Branding) */}
                 <div className="absolute left-0 top-0 bottom-0 w-12 bg-slate-950/50 z-20 border-r border-white/5" />
@@ -151,7 +138,7 @@ export function Signup() {
                       <div>
                         <h2 className="text-4xl font-display font-bold mb-2 text-white">{isSignup ? "Create Account" : "Welcome Back"}</h2>
                         <p className="text-slate-400 text-sm">
-                          {isSignup ? "Join our cosmic community today." : "Please enter your details to sign in."}
+                          {isSignup ? "Join the BHL tech community today." : "Please enter your details to sign in."}
                         </p>
                       </div>
 
@@ -213,7 +200,7 @@ export function Signup() {
                           </div>
                         </div>
 
-                        <button className="w-full bg-accent text-white py-4 rounded-full font-bold hover:scale-[1.02] transition-transform flex items-center justify-center gap-3 shadow-xl mt-4 galaxy-glow">
+                        <button className="w-full bg-accent text-white py-4 rounded-full font-bold hover:scale-[1.02] transition-transform flex items-center justify-center gap-3 shadow-xl mt-4 tech-glow">
                           {isSignup ? "Sign Up" : "Login"} <ArrowRight className="w-5 h-5" />
                         </button>
                       </form>

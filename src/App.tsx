@@ -3,8 +3,8 @@ import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { Home } from "./pages/Home";
 import { Shop } from "./pages/Shop";
-import { BookDetails } from "./pages/BookDetails";
-import { SubscriptionPlans } from "./pages/SubscriptionPlans";
+import { ProductDetails } from "./pages/ProductDetails";
+import { Services } from "./pages/Services";
 import { About } from "./pages/About";
 import { Contact } from "./pages/Contact";
 import { Login } from "./pages/Login";
@@ -26,8 +26,8 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/shop" element={<Shop />} />
-              <Route path="/book/:id" element={<BookDetails />} />
-              <Route path="/subscriptions" element={<SubscriptionPlans />} />
+              <Route path="/product/:id" element={<ProductDetails />} />
+              <Route path="/services" element={<Services />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/login" element={<Login />} />

@@ -5,8 +5,8 @@ import { useState } from "react";
 
 export function Cart() {
   const [cartItems, setCartItems] = useState([
-    { id: 1, title: "The Alchemist", author: "Paulo Coelho", price: 39.90, quantity: 1, image: "https://picsum.photos/seed/alchemist/200/300" },
-    { id: 2, title: "Atomic Habits", author: "James Clear", price: 75.00, quantity: 1, image: "https://picsum.photos/seed/habits/200/300" },
+    { id: 1, title: "RTX 4060 Ti Gaming PC", brand: "BHL Custom", price: 3499.00, quantity: 1, image: "https://picsum.photos/seed/pc/200/300" },
+    { id: 2, title: "Mechanical Gaming Keyboard", brand: "Logitech", price: 299.00, quantity: 1, image: "https://picsum.photos/seed/keyboard/200/300" },
   ]);
 
   const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
@@ -24,31 +24,18 @@ export function Cart() {
   };
 
   return (
-    <div className="pt-32 pb-20 px-4 bg-space-dark min-h-screen relative overflow-hidden">
-      {/* Background Stars */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(30)].map((_, i) => (
-          <div
-            key={i}
-            className="star"
-            style={{
-              width: Math.random() * 2 + 'px',
-              height: Math.random() * 2 + 'px',
-              top: Math.random() * 100 + '%',
-              left: Math.random() * 100 + '%',
-              animationDelay: Math.random() * 5 + 's',
-              opacity: Math.random() * 0.5 + 0.2
-            }}
-          />
-        ))}
+    <div className="pt-32 pb-20 px-4 bg-tech-black min-h-screen relative overflow-hidden">
+      {/* Tech Grid Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex items-center gap-4 mb-12">
-          <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center galaxy-glow">
+          <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center tech-glow">
             <ShoppingCart className="text-white w-6 h-6" />
           </div>
-          <h1 className="text-5xl font-display font-bold text-white tracking-tighter">COSMIC CART</h1>
+          <h1 className="text-5xl font-display font-bold text-white tracking-tighter">YOUR CART</h1>
         </div>
 
         {cartItems.length > 0 ? (
@@ -68,7 +55,7 @@ export function Cart() {
                   </div>
                   <div className="flex-grow">
                     <h3 className="font-display font-bold text-xl mb-1 text-white">{item.title}</h3>
-                    <p className="text-sm text-slate-400 mb-4">{item.author}</p>
+                    <p className="text-sm text-slate-400 mb-4">{item.brand}</p>
                     <div className="flex items-center gap-4">
                       <div className="flex items-center border border-white/10 rounded-full overflow-hidden bg-white/5">
                         <button onClick={() => updateQuantity(item.id, -1)} className="px-3 py-1 hover:bg-white/10 font-bold text-white transition-colors">-</button>
@@ -89,7 +76,7 @@ export function Cart() {
 
               <Link to="/shop" className="inline-flex items-center gap-2 text-accent font-bold hover:gap-3 transition-all mt-8">
                 <ArrowLeft className="w-4 h-4" />
-                Return to Archive
+                Return to Shop
               </Link>
             </div>
 
@@ -109,10 +96,10 @@ export function Cart() {
                   </div>
                   <div className="pt-4 border-t border-white/10 flex justify-between items-end">
                     <span className="font-bold text-lg text-slate-300">Total</span>
-                    <span className="text-3xl font-display font-bold text-accent galaxy-glow">RM {total.toFixed(2)}</span>
+                    <span className="text-3xl font-display font-bold text-accent tech-glow">RM {total.toFixed(2)}</span>
                   </div>
                 </div>
-                <Link to="/checkout" className="w-full bg-accent text-white py-5 rounded-full text-xl font-bold hover:scale-[1.02] transition-transform flex items-center justify-center gap-3 shadow-xl relative z-10 galaxy-glow">
+                <Link to="/checkout" className="w-full bg-accent text-white py-5 rounded-full text-xl font-bold hover:scale-[1.02] transition-transform flex items-center justify-center gap-3 shadow-xl relative z-10 tech-glow">
                   Checkout <ArrowRight className="w-5 h-5" />
                 </Link>
               </div>
@@ -122,11 +109,11 @@ export function Cart() {
                 <div className="relative z-10">
                   <h3 className="text-lg font-bold text-accent mb-2 flex items-center gap-2">
                     <Sparkles className="w-5 h-5" />
-                    Subscribe & Save
+                    BHL Priority Service
                   </h3>
-                  <p className="text-slate-400 text-sm mb-6">Join the Cosmic Elite and save 20% on this order and all future purchases.</p>
-                  <Link to="/subscriptions" className="text-accent font-bold flex items-center gap-2 group/link">
-                    View Plans <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                  <p className="text-slate-400 text-sm mb-6">Get your repairs and custom builds prioritized with our BHL Tech Support plan.</p>
+                  <Link to="/services" className="text-accent font-bold flex items-center gap-2 group/link">
+                    View Services <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                   </Link>
                 </div>
               </div>
@@ -138,8 +125,8 @@ export function Cart() {
               <ShoppingCart className="w-12 h-12 text-slate-500" />
             </div>
             <h2 className="text-4xl font-display font-bold mb-4 text-white">Your cart is empty</h2>
-            <p className="text-slate-400 mb-10 max-w-md mx-auto">Looks like you haven't added any books to your collection yet. Start exploring our universe of knowledge!</p>
-            <Link to="/shop" className="bg-accent text-white px-12 py-5 rounded-full text-xl font-bold hover:scale-105 transition-transform inline-block galaxy-glow">
+            <p className="text-slate-400 mb-10 max-w-md mx-auto">Looks like you haven't added any tech to your cart yet. Start exploring our high-performance hardware!</p>
+            <Link to="/shop" className="bg-accent text-white px-12 py-5 rounded-full text-xl font-bold hover:scale-105 transition-transform inline-block tech-glow">
               Start Shopping
             </Link>
           </div>
