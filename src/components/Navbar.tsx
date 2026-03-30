@@ -1,104 +1,93 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Laptop, Phone, MessageCircle } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
-import { cn } from '@/src/lib/utils';
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "motion/react";
+import { ShoppingCart, BookOpen, Search, Menu, X, User } from "lucide-react";
+import { cn } from "../lib/utils";
 
-const navLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'Services', href: '/services' },
-  { name: 'Shop', href: '/shop' },
-  { name: 'About', href: '/about' },
-  { name: 'Contact', href: '/contact' },
-];
-
-export default function Navbar() {
-  const [isOpen, setIsOpen] = React.useState(false);
+export function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
+  const navLinks = [
+    { name: "Shop", path: "/shop" },
+    { name: "Subscriptions", path: "/subscriptions" },
+    { name: "About", path: "/about" },
+    { name: "Contact", path: "/contact" },
+  ];
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-neutral-950/80 backdrop-blur-md border-b border-white/10">
+    <nav className="fixed w-full z-50 bg-space-dark/80 backdrop-blur-md border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          <Link to="/" className="flex items-center gap-2">
-            <div className="bg-primary p-1.5 rounded-lg">
-              <Laptop className="w-6 h-6 text-white" />
+        <div className="flex justify-between items-center h-20">
+          <Link to="/" className="flex items-center gap-2 group">
+            <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center galaxy-glow group-hover:scale-110 transition-transform">
+              <BookOpen className="text-white w-6 h-6" />
             </div>
-            <span className="text-xl font-display font-bold tracking-tighter uppercase">
-              BHL<span className="text-primary">Computer</span>
-            </span>
+            <span className="text-2xl font-display font-bold tracking-tighter text-white">COSMIC BOOKS</span>
           </Link>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
-                key={link.name}
-                to={link.href}
+                key={link.path}
+                to={link.path}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary",
-                  location.pathname === link.href ? "text-primary" : "text-neutral-400"
+                  "text-[10px] font-bold uppercase tracking-widest transition-all hover:text-accent",
+                  location.pathname === link.path ? "text-accent" : "text-slate-400"
                 )}
               >
                 {link.name}
               </Link>
             ))}
-            <a
-              href="https://wa.me/60163649245"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary py-2 px-4 text-sm"
-            >
-              <MessageCircle className="w-4 h-4" />
-              WhatsApp Us
-            </a>
+          </div>
+
+          <div className="hidden md:flex items-center gap-4">
+            <button className="p-2 hover:bg-white/5 rounded-full transition-colors text-slate-400 hover:text-white">
+              <Search className="w-5 h-5" />
+            </button>
+            <Link to="/cart" className="p-2 hover:bg-white/5 rounded-full transition-colors relative text-slate-400 hover:text-white">
+              <ShoppingCart className="w-5 h-5" />
+              <span className="absolute top-0 right-0 w-4 h-4 bg-accent text-white text-[8px] flex items-center justify-center rounded-full galaxy-glow">2</span>
+            </Link>
+            <Link to="/login" className="bg-white/10 text-white px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-accent transition-all flex items-center gap-2 border border-white/10 galaxy-glow">
+              <User className="w-4 h-4" />
+              Login
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-neutral-400 hover:text-white"
-            >
-              {isOpen ? <X /> : <Menu />}
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2 text-white">
+              {isMenuOpen ? <X /> : <Menu />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Nav */}
+      {/* Mobile Menu */}
       <AnimatePresence>
-        {isOpen && (
+        {isMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
+            animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-neutral-900 border-b border-white/10 overflow-hidden"
+            className="md:hidden bg-space-dark border-b border-white/10 overflow-hidden"
           >
-            <div className="px-4 pt-2 pb-6 space-y-1">
+            <div className="px-4 py-6 space-y-4">
               {navLinks.map((link) => (
                 <Link
-                  key={link.name}
-                  to={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className={cn(
-                    "block px-3 py-4 text-base font-medium rounded-md",
-                    location.pathname === link.href ? "text-primary bg-primary/10" : "text-neutral-400 hover:text-white hover:bg-white/5"
-                  )}
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block text-sm font-bold uppercase tracking-widest text-slate-400 hover:text-white"
                 >
                   {link.name}
                 </Link>
               ))}
-              <div className="pt-4 px-3">
-                <a
-                  href="https://wa.me/60163649245"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary w-full"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  WhatsApp Us Now
-                </a>
+              <div className="pt-4 flex gap-4">
+                <Link to="/login" onClick={() => setIsMenuOpen(false)} className="flex-1 bg-accent text-white py-3 rounded-xl font-bold text-center text-[10px] uppercase tracking-widest galaxy-glow">Login</Link>
+                <Link to="/cart" onClick={() => setIsMenuOpen(false)} className="flex-1 border border-white/10 py-3 rounded-xl font-bold text-center text-[10px] uppercase tracking-widest text-white bg-white/5">Cart (2)</Link>
               </div>
             </div>
           </motion.div>

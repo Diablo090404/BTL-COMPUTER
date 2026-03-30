@@ -1,133 +1,122 @@
-import { motion } from 'motion/react';
-import { Phone, Mail, MapPin, Clock, MessageCircle, Facebook, Instagram } from 'lucide-react';
+import { motion } from "motion/react";
+import { Mail, Phone, MapPin, Send, MessageSquare, Sparkles, ArrowRight } from "lucide-react";
 
-export default function Contact() {
+export function Contact() {
   return (
-    <div className="pt-20">
-      {/* Header */}
-      <section className="py-24 bg-neutral-900/50 border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-7xl mb-6">Contact <span className="text-primary">Us</span></h1>
-          <p className="text-xl text-neutral-400 max-w-2xl mx-auto">
-            Have a question? Need a repair quote? We're here to help.
+    <div className="pt-32 pb-20 px-4 bg-space-dark min-h-screen relative overflow-hidden">
+      {/* Background Stars */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(50)].map((_, i) => (
+          <div
+            key={i}
+            className="star"
+            style={{
+              width: Math.random() * 2 + 'px',
+              height: Math.random() * 2 + 'px',
+              top: Math.random() * 100 + '%',
+              left: Math.random() * 100 + '%',
+              animationDelay: Math.random() * 5 + 's',
+              opacity: Math.random() * 0.5 + 0.2
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="max-w-7xl mx-auto space-y-32 relative z-10">
+        {/* Hero Section */}
+        <div className="text-center space-y-8">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 bg-accent/10 text-accent rounded-full text-[10px] font-bold uppercase tracking-widest border border-accent/20 galaxy-glow"
+          >
+            <Sparkles className="w-4 h-4" />
+            Contact Us
+          </motion.div>
+          <h1 className="text-6xl md:text-8xl font-display font-bold leading-tight text-white tracking-tighter">WE'RE HERE TO <br /> <span className="italic text-accent galaxy-glow">LISTEN</span></h1>
+          <p className="text-slate-400 max-w-2xl mx-auto text-xl leading-relaxed">
+            Have a question about a book, a subscription, or just want to talk about your favorite read? We're all ears across the galaxy.
           </p>
         </div>
-      </section>
 
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Contact Info */}
-            <div className="space-y-12">
-              <div>
-                <h2 className="text-3xl mb-8">Get in Touch</h2>
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-primary/10 p-3 rounded-xl">
-                      <Phone className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <div className="font-bold text-white">Call / WhatsApp</div>
-                      <p className="text-neutral-400">016-364 9245</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="bg-primary/10 p-3 rounded-xl">
-                      <Mail className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <div className="font-bold text-white">Email</div>
-                      <p className="text-neutral-400">info@bhlcomputer.com</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="bg-primary/10 p-3 rounded-xl">
-                      <MapPin className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <div className="font-bold text-white">Visit Us</div>
-                      <p className="text-neutral-400">No 1, 2&3, Jalan U1, Taman Universiti, 35900 Tanjong Malim, Perak</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="bg-primary/10 p-3 rounded-xl">
-                      <Clock className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <div className="font-bold text-white">Opening Hours</div>
-                      <p className="text-neutral-400">Mon - Sat: 9:30 AM - 8:00 PM<br/>Sun: Closed</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-xl mb-6">Follow Us</h3>
-                <div className="flex gap-4">
-                  <a href="#" className="btn-outline px-4 py-2">
-                    <Facebook className="w-5 h-5" />
-                    Facebook
-                  </a>
-                  <a href="#" className="btn-outline px-4 py-2">
-                    <Instagram className="w-5 h-5" />
-                    Instagram
-                  </a>
-                </div>
-              </div>
+        <div className="grid lg:grid-cols-2 gap-20 items-start">
+          {/* Contact Info */}
+          <div className="space-y-16">
+            <div className="space-y-10">
+              <h2 className="text-5xl font-display font-bold leading-tight text-white tracking-tight">GET IN <br /> <span className="text-accent italic galaxy-glow">TOUCH</span></h2>
+              <p className="text-lg text-slate-400 leading-relaxed">
+                Our team of literary experts is available 24/7 to help you navigate the universe of Cosmic Books.
+              </p>
             </div>
 
-            {/* Quick Contact Form (Simulated) */}
-            <div className="glass-card p-8 md:p-12">
-              <h2 className="text-2xl mb-8">Send a Message</h2>
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-neutral-400">Name</label>
-                    <input type="text" className="w-full bg-white/5 border border-white/10 rounded-xl p-3 focus:outline-none focus:border-primary" placeholder="Your Name" />
+            <div className="grid md:grid-cols-2 gap-8">
+              {[
+                { icon: Mail, label: "Email", value: "hello@cosmicbooks.com" },
+                { icon: Phone, label: "Phone", value: "+60 16-364 9245" },
+                { icon: MapPin, label: "Address", value: "Tanjong Malim, Perak, Malaysia" },
+                { icon: MessageSquare, label: "Support", value: "Chat with us 24/7" }
+              ].map((item, i) => (
+                <div key={i} className="glass-card p-8 space-y-4 group hover:border-accent/30 transition-colors">
+                  <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center border border-white/10 group-hover:border-accent/30 transition-colors">
+                    <item.icon className="w-5 h-5 text-accent" />
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-neutral-400">Phone Number</label>
-                    <input type="text" className="w-full bg-white/5 border border-white/10 rounded-xl p-3 focus:outline-none focus:border-primary" placeholder="012-3456789" />
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-1">{item.label}</p>
+                    <p className="font-bold text-white">{item.value}</p>
                   </div>
                 </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-neutral-400">Service Needed</label>
-                  <select className="w-full bg-white/5 border border-white/10 rounded-xl p-3 focus:outline-none focus:border-primary">
-                    <option>Computer Repair</option>
-                    <option>Custom PC Build</option>
-                    <option>Buy Laptop</option>
-                    <option>Accessories</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-neutral-400">Message</label>
-                  <textarea rows={4} className="w-full bg-white/5 border border-white/10 rounded-xl p-3 focus:outline-none focus:border-primary" placeholder="How can we help you?"></textarea>
-                </div>
-                <button className="btn-primary w-full py-4 text-lg">
-                  Send Message
-                </button>
-                <p className="text-center text-neutral-500 text-sm">
-                  Or for faster reply, use the WhatsApp button below.
-                </p>
-              </form>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Map */}
-      <section className="h-[500px] w-full border-t border-white/10 grayscale hover:grayscale-0 transition-all">
-        <iframe 
-          src="https://www.google.com/maps?q=No%201,%202%263,%20Jalan%20U1,%20Taman%20Universiti,%2035900%20Tanjong%20Malim,%20Perak&output=embed" 
-          width="100%" 
-          height="100%" 
-          style={{ border: 0 }} 
-          allowFullScreen 
-          loading="lazy"
-          title="Shop Location"
-        />
-      </section>
+          {/* Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="glass-card p-12 relative overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent pointer-events-none" />
+            <form className="space-y-8 relative z-10">
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-slate-600 ml-4">Full Name</label>
+                  <input type="text" placeholder="John Doe" className="w-full px-8 py-5 rounded-3xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-accent transition-colors" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-slate-600 ml-4">Email Address</label>
+                  <input type="email" placeholder="name@example.com" className="w-full px-8 py-5 rounded-3xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-accent transition-colors" />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <label className="text-[10px] font-bold uppercase tracking-widest text-slate-600 ml-4">Subject</label>
+                <input type="text" placeholder="How can we help?" className="w-full px-8 py-5 rounded-3xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-accent transition-colors" />
+              </div>
+              <div className="space-y-2">
+                <label className="text-[10px] font-bold uppercase tracking-widest text-slate-600 ml-4">Message</label>
+                <textarea rows={5} placeholder="Tell us more..." className="w-full px-8 py-5 rounded-3xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-accent transition-colors resize-none"></textarea>
+              </div>
+              <button className="w-full bg-accent text-white py-6 rounded-full text-xl font-bold hover:scale-[1.02] transition-transform flex items-center justify-center gap-3 shadow-xl galaxy-glow">
+                Send Message <Send className="w-5 h-5" />
+              </button>
+            </form>
+          </motion.div>
+        </div>
+
+        {/* FAQ Preview */}
+        <div className="bg-accent text-white p-12 md:p-24 rounded-[60px] relative overflow-hidden text-center galaxy-glow">
+          <div className="relative z-10 max-w-2xl mx-auto">
+            <h2 className="text-5xl font-display font-bold mb-8 tracking-tight">QUICK ANSWERS</h2>
+            <p className="text-white/60 text-lg mb-12 leading-relaxed">
+              Check out our frequently asked questions for instant answers to common queries about shipping, returns, and subscriptions.
+            </p>
+            <button className="bg-white text-accent px-12 py-5 rounded-full text-xl font-bold hover:scale-105 transition-transform flex items-center gap-2 mx-auto shadow-2xl">
+              View FAQ <ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
+          <div className="absolute top-0 left-0 w-1/3 h-full bg-white/10 blur-[120px] rounded-full -translate-y-1/2 -translate-x-1/2" />
+        </div>
+      </div>
     </div>
   );
 }

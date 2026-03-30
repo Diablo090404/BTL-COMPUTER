@@ -1,87 +1,111 @@
-import { motion } from 'motion/react';
-import { Star, Users, History, Heart } from 'lucide-react';
+import { motion } from "motion/react";
+import { BookOpen, Sparkles, Users, Award, Heart, Globe } from "lucide-react";
 
-export default function About() {
+export function About() {
   return (
-    <div className="pt-20">
-      {/* Hero */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-            >
-              <h1 className="text-5xl md:text-7xl mb-8">Helping Tanjong Malim Stay <span className="text-primary">Connected</span></h1>
-              <p className="text-xl text-neutral-400 leading-relaxed mb-8">
-                BHL Computer started with a simple mission: to provide reliable, honest, and affordable computer services to our local community.
-              </p>
-              <div className="grid grid-cols-2 gap-8">
-                <div>
-                  <div className="text-4xl font-display font-bold text-primary mb-1">10+</div>
-                  <div className="text-sm text-neutral-500 uppercase tracking-widest">Years Experience</div>
+    <div className="pt-32 pb-20 px-4 bg-space-dark min-h-screen relative overflow-hidden">
+      {/* Background Stars */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(50)].map((_, i) => (
+          <div
+            key={i}
+            className="star"
+            style={{
+              width: Math.random() * 2 + 'px',
+              height: Math.random() * 2 + 'px',
+              top: Math.random() * 100 + '%',
+              left: Math.random() * 100 + '%',
+              animationDelay: Math.random() * 5 + 's',
+              opacity: Math.random() * 0.5 + 0.2
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="max-w-7xl mx-auto space-y-32 relative z-10">
+        {/* Hero Section */}
+        <div className="text-center space-y-8">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 bg-accent/10 text-accent rounded-full text-[10px] font-bold uppercase tracking-widest border border-accent/20 galaxy-glow"
+          >
+            <Sparkles className="w-4 h-4" />
+            Our Cosmic Origin
+          </motion.div>
+          <h1 className="text-6xl md:text-8xl font-display font-bold leading-tight text-white tracking-tighter">BEYOND THE <br /> <span className="italic text-accent galaxy-glow">PRINTED</span> GALAXY</h1>
+          <p className="text-slate-400 max-w-2xl mx-auto text-xl leading-relaxed">
+            Cosmic Books was founded with a simple mission: to connect every reader with the stories that will define their future across the universe.
+          </p>
+        </div>
+
+        {/* Vision Section */}
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            <div className="aspect-square rounded-[60px] overflow-hidden border border-white/10 shadow-2xl group">
+              <img src="https://picsum.photos/seed/vision/800/800" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-space-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            </div>
+            <div className="absolute -bottom-10 -right-10 glass-card p-10 rotate-6 hidden md:block galaxy-glow">
+              <p className="text-4xl font-display font-bold text-accent mb-2">2024</p>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Established in Orbit</p>
+            </div>
+          </motion.div>
+
+          <div className="space-y-10">
+            <h2 className="text-5xl font-display font-bold leading-tight text-white tracking-tight">A UNIVERSE OF <br /> <span className="text-accent italic galaxy-glow">POSSIBILITIES</span></h2>
+            <p className="text-lg text-slate-400 leading-relaxed">
+              We believe that books are more than just paper and ink. They are portals to other worlds, vessels of wisdom, and catalysts for change. Whether you're looking for a physical masterpiece to grace your shelves or a digital companion for your travels, we're here to guide you through the stars.
+            </p>
+            <div className="grid grid-cols-2 gap-8">
+              {[
+                { icon: Users, label: "Community", text: "10k+ Active Readers" },
+                { icon: Globe, label: "Global", text: "Shipping to 120+ Systems" },
+                { icon: Award, label: "Quality", text: "Curated Selections" },
+                { icon: Heart, label: "Passion", text: "Reader-First Approach" }
+              ].map((item, i) => (
+                <div key={i} className="space-y-3 group">
+                  <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center border border-white/10 group-hover:border-accent/30 transition-colors">
+                    <item.icon className="w-5 h-5 text-accent" />
+                  </div>
+                  <p className="font-bold text-white">{item.label}</p>
+                  <p className="text-sm text-slate-500">{item.text}</p>
                 </div>
-                <div>
-                  <div className="text-4xl font-display font-bold text-primary mb-1">5k+</div>
-                  <div className="text-sm text-neutral-500 uppercase tracking-widest">Happy Customers</div>
-                </div>
-              </div>
-            </motion.div>
-            <div className="relative">
-              <img src="https://picsum.photos/seed/team/800/600" alt="Our Team" className="rounded-3xl border border-white/10" referrerPolicy="no-referrer" />
-              <div className="absolute -bottom-6 -left-6 glass-card p-6 max-w-xs">
-                <p className="text-sm italic text-neutral-300">"We don't just fix computers, we build relationships with our customers."</p>
-                <div className="mt-4 font-bold text-primary">— BHL Founder</div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Values */}
-      <section className="py-24 bg-neutral-900/30">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl mb-4">Our Core Values</h2>
-            <p className="text-neutral-400">What makes BHL Computer different from others.</p>
+        {/* Team Section */}
+        <div className="space-y-16">
+          <div className="text-center">
+            <h2 className="text-5xl font-display font-bold mb-4 text-white tracking-tight">MEET THE CURATORS</h2>
+            <p className="text-slate-400">The minds behind the universe of Cosmic Books.</p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: Star, title: 'Trust', desc: 'We are a physical shop. No hidden charges, no fake parts.' },
-              { icon: Users, title: 'Community', desc: 'Supporting UPSI students and local businesses since day one.' },
-              { icon: History, title: 'Speed', desc: 'We value your time. Fast diagnosis and quick turnaround.' },
-              { icon: Heart, title: 'Passion', desc: 'We love tech. We stay updated with the latest hardware trends.' }
-            ].map((v, idx) => (
-              <div key={idx} className="glass-card p-8 text-center">
-                <div className="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <v.icon className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="text-xl mb-4">{v.title}</h3>
-                <p className="text-neutral-400 text-sm leading-relaxed">{v.desc}</p>
-              </div>
+              { name: "Alex Rivera", role: "Founder & CEO", img: "https://i.pravatar.cc/150?u=alex" },
+              { name: "Sarah Chen", role: "Head of Curation", img: "https://i.pravatar.cc/150?u=sarah" },
+              { name: "Marcus Thorne", role: "Community Lead", img: "https://i.pravatar.cc/150?u=marcus" }
+            ].map((member, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ y: -10 }}
+                className="glass-card p-10 text-center group hover:border-accent/30 transition-colors"
+              >
+                <img src={member.img} className="w-24 h-24 rounded-full mx-auto mb-6 border-4 border-white/10 p-1 group-hover:border-accent/30 transition-colors shadow-2xl" />
+                <h3 className="text-2xl font-display font-bold mb-1 text-white">{member.name}</h3>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-slate-500">{member.role}</p>
+              </motion.div>
             ))}
           </div>
         </div>
-      </section>
-
-      {/* Story */}
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-5xl mb-8">Our Story</h2>
-          <div className="space-y-6 text-neutral-400 text-lg leading-relaxed text-left">
-            <p>
-              Founded in 2015, BHL Computer began as a small repair kiosk in Tanjong Malim. We noticed that many students and locals struggled to find a place they could trust for their computer needs, often having to travel all the way to KL or Ipoh.
-            </p>
-            <p>
-              We decided to change that. By focusing on transparency and fast service, we quickly became the go-to spot for UPSI students and local SMEs. Today, we are proud to be one of the most trusted computer shops in the region, offering everything from basic repairs to high-end custom gaming builds.
-            </p>
-            <p>
-              Whether you're a student needing a laptop for assignments, a gamer looking for more FPS, or a business owner needing IT solutions, we are here to help.
-            </p>
-          </div>
-        </div>
-      </section>
+      </div>
     </div>
   );
 }

@@ -1,34 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #f27d26;
-  --color-secondary: #1a1a1a;
-  --color-accent: #00ff00;
-  
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-primary: #0a0510;
+  --color-secondary: #1e3a8a;
+  --color-accent: #9333ea;
+  --color-space-dark: #020617;
+  --color-cosmic-purple: #6b21a8;
+  --color-cosmic-blue: #1d4ed8;
 }
 
 @layer base {
   body {
-    @apply bg-neutral-950 text-neutral-100 font-sans;
+    @apply bg-space-dark text-slate-200 font-sans antialiased;
   }
-  
+
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display font-bold tracking-tight;
+    @apply font-display tracking-tight;
   }
 }
 
-@layer components {
-  .glass-card {
-    @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl;
-  }
-  
-  .btn-primary {
-    @apply bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-xl transition-all active:scale-95 flex items-center justify-center gap-2;
-  }
-  
-  .btn-outline {
-    @apply border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold py-3 px-6 rounded-xl transition-all active:scale-95 flex items-center justify-center gap-2;
-  }
+.glass {
+  @apply bg-white/5 backdrop-blur-xl border border-white/10;
+}
+
+.cosmic-gradient {
+  background: radial-gradient(circle at top right, var(--color-cosmic-purple), transparent),
+              radial-gradient(circle at bottom left, var(--color-cosmic-blue), transparent),
+              var(--color-space-dark);
+}
+
+.galaxy-glow {
+  box-shadow: 0 0 40px rgba(147, 51, 234, 0.3);
+}
+
+.star {
+  @apply absolute rounded-full bg-white animate-pulse;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.book-shadow {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 
+              0 0 20px rgba(147, 51, 234, 0.2);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(147, 51, 234, 0.3);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(147, 51, 234, 0.5);
+}
+
+.glass-card {
+  @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl;
+}
+
+.btn-primary {
+  @apply bg-accent hover:bg-accent/90 text-white font-bold py-3 px-6 rounded-xl transition-all active:scale-95 flex items-center justify-center gap-2;
+}
+
+.btn-outline {
+  @apply border-2 border-accent text-accent hover:bg-accent hover:text-white font-bold py-3 px-6 rounded-xl transition-all active:scale-95 flex items-center justify-center gap-2;
 }
